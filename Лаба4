@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main() {
+    int num;
+    printf("Введіть ціле число: ");
+    scanf("%d", &num);
+
+    if (num % 3 == 0) {
+        printf("%d ділиться на 3", num);
+    } else {
+        printf("%d не ділиться на 3", num);
+    }
+
+    return 0;
+}
