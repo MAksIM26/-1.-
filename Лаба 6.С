@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <math.h>
+
+void solveQuadraticEquation(double a, double b, double c) {
+    double discriminant, root1, root2;
+
+    // Обчислення дискримінанта
+    discriminant = b * b - 4 * a * c;
+
+    // Перевірка дискримінанта
+    if (discriminant > 0) {
+        // Два дійсних корені
+        root1 = (-b + sqrt(discriminant)) / (2 * a);
+        root2 = (-b - sqrt(discriminant)) / (2 * a);
+        printf("Корені рівняння: %.2f та %.2f\n", root1, root2);
+    } else if (discriminant == 0) {
+        // Один дійсний корінь
+        root1 = -b / (2 * a);
+        printf("Рівняння має один корінь: %.2f\n", root1);
+    } else {
+        // Комплексні корені
+        double realPart = -b / (2 * a);
+        double imaginaryPart = sqrt(-discriminant) / (2 * a);
+        printf("Рівняння має комплексні корені:\n");
+        printf("Корінь 1: %.2f + %.2fi\n", realPart, imaginaryPart);
+        printf("Корінь 2: %.2f - %.2fi\n", realPart, imaginaryPart);
+    }
+}
+
+int main() {
+    double a, b, c;
+
+    // Введення коефіцієнтів квадратного рівняння
+    printf("Введіть коефіцієнти квадратного рівняння (a, b, c): ");
+    scanf("%lf %lf %lf", &a, &b, &c);
+
+    // Розв'язання квадратного рівняння і вивід результатів
+    solveQuadraticEquation(a, b, c);
+
+    return 0;
+}
