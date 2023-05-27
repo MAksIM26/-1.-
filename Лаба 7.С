@@ -1,1 +1,53 @@
+#include <stdio.h>
+#include <string.h>
 
+void mergeArrays(char arr1[], int size1, char arr2[], int size2, char merged[]) {
+    int i = 0, j = 0, k = 0;
+
+    // Об'єднання масивів arr1 і arr2 в merged
+    while (i < size1 && j < size2) {
+        if (arr1[i] < arr2[j]) {
+            merged[k] = arr1[i];
+            i++;
+        } else {
+            merged[k] = arr2[j];
+            j++;
+        }
+        k++;
+    }
+
+    // Додавання залишків, якщо такі є
+    while (i < size1) {
+        merged[k] = arr1[i];
+        i++;
+        k++;
+    }
+
+    while (j < size2) {
+        merged[k] = arr2[j];
+        j++;
+        k++;
+    }
+}
+
+int main() {
+    char arr1[] = {'a', 'c', 'e', 'g'};
+    int size1 = sizeof(arr1) / sizeof(arr1[0]);
+
+    char arr2[] = {'b', 'd', 'f'};
+    int size2 = sizeof(arr2) / sizeof(arr2[0]);
+
+    char merged[size1 + size2];
+
+    // Об'єднання масивів arr1 і arr2 в merged
+    mergeArrays(arr1, size1, arr2, size2, merged);
+
+    // Вивід об'єднаного впорядкованого масиву
+    printf("Об'єднаний масив: ");
+    for (int i = 0; i < size1 + size2; i++) {
+        printf("%c ", merged[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
