@@ -1,0 +1,45 @@
+#include <stdio.h>
+
+struct Student {
+    char surname[50];
+    char initials[10];
+    int birthYear;
+    char group[10];
+    int rating;
+    char gender;
+};
+
+int main() {
+    int n; // Кількість студентів
+    printf("Введіть кількість студентів: ");
+    scanf("%d", &n);
+  
+    struct Student students[n];
+  
+    // Введення даних про студентів
+    for (int i = 0; i < n; i++) {
+        printf("Введіть дані про студента №%d:\n", i + 1);
+        printf("Прізвище: ");
+        scanf("%s", students[i].surname);
+        printf("Ініціали: ");
+        scanf("%s", students[i].initials);
+        printf("Рік народження: ");
+        scanf("%d", &students[i].birthYear);
+        printf("Група: ");
+        scanf("%s", students[i].group);
+        printf("Рейтинг: ");
+        scanf("%d", &students[i].rating);
+        printf("Стать (M/F): ");
+        scanf(" %c", &students[i].gender);
+    }
+
+    // Виведення студентів з рейтингом меншим за 50 балів
+    printf("\nСтуденти з рейтингом меншим за 50 балів:\n");
+    for (int i = 0; i < n; i++) {
+        if (students[i].rating < 50) {
+            printf("%s, %s\n", students[i].surname, students[i].initials);
+        }
+    }
+
+    return 0;
+}
